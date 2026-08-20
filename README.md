@@ -16,62 +16,36 @@ The benchmark focuses on graph-specific operations, including data loading, grap
 
 ## Database Systems
 
-The benchmark evaluates five graph database systems with different
-architectural approaches.
+The benchmark evaluates five graph database systems with different architectural approaches.
 
 ### Neo4j
 
-**Neo4j** is a native graph database designed around a property-graph model.
-It stores nodes, relationships, and properties as graph-native structures and
-provides Cypher as its primary query language.
-
-In this benchmark, Neo4j is used as a reference native graph database for
-comparison with the other systems.
+- **Neo4j** is a native graph database designed around a property-graph model.
+- It stores nodes, relationships, and properties as graph-native structures and provides Cypher as its primary query language.
+- In this benchmark, Neo4j is used as a reference native graph database for comparison with the other systems.
 
 ### Memgraph
 
-**Memgraph** is a high-performance graph database that uses a property-graph
-model and supports Cypher-compatible queries.
-
-Memgraph is designed for low-latency graph workloads and keeps frequently
-accessed graph data in memory, making it particularly relevant for
-latency-sensitive traversal and transactional workloads.
+- **Memgraph** is a high-performance graph database that uses a property-graph model and supports Cypher-compatible queries.
+- Memgraph is designed for low-latency graph workloads and keeps frequently accessed graph data in memory, making it particularly relevant for latency-sensitive traversal and transactional workloads.
 
 ### FalkorDB
 
-**FalkorDB** is a Redis-based graph database that provides a property-graph
-model and Cypher-compatible graph querying.
-
-Its architecture is strongly memory-oriented, making it useful for evaluating
-high-throughput graph operations and low-latency workloads.
-
-Because FalkorDB primarily keeps graph data in memory, its on-disk directory
-size should not be interpreted as its complete runtime memory footprint.
+- **FalkorDB** is a Redis-based graph database that provides a property-graph model and Cypher-compatible graph querying.
+- Its architecture is strongly memory-oriented, making it useful for evaluating high-throughput graph operations and low-latency workloads.
+- Because FalkorDB primarily keeps graph data in memory, its on-disk directory size should not be interpreted as its complete runtime memory footprint.
 
 ### CognoDB
 
-**CognoDB** is a graph database accessed through the Bolt protocol and
-Cypher-compatible queries.
-
-For this benchmark, CognoDB is accessed using the official Neo4j Python
-driver and is evaluated using the same graph model and benchmark operations
-as the other Cypher-compatible systems.
-
-CognoDB is particularly useful in this comparison because it represents a
-remote graph database deployment, meaning that network and remote execution
-overhead can contribute to measured query latency.
+- **CognoDB** is a graph database accessed through the Bolt protocol and Cypher-compatible queries.
+- For this benchmark, CognoDB is accessed using the official Neo4j Python driver and is evaluated using the same graph model and benchmark operations as the other Cypher-compatible systems.
+- CognoDB is particularly useful in this comparison because it represents a remote graph database deployment, meaning that network and remote execution overhead can contribute to measured query latency.
 
 ### Apache AGE
 
-**Apache AGE** is a graph database extension for PostgreSQL rather than a
-standalone graph database engine.
-
-It adds graph functionality to PostgreSQL and provides an openCypher-based
-query interface through PostgreSQL.
-
-In this benchmark, Apache AGE is evaluated as a graph layer built on top of
-a relational database system. Its results therefore also reflect the
-characteristics of its PostgreSQL-based architecture.
+- **Apache AGE** is a graph database extension for PostgreSQL rather than a standalone graph database engine.
+- It adds graph functionality to PostgreSQL and provides an openCypher-based query interface through PostgreSQL.
+- In this benchmark, Apache AGE is evaluated as a graph layer built on top of a relational database system. Its results therefore also reflect the characteristics of its PostgreSQL-based architecture.
 
 ### Comparison
 
