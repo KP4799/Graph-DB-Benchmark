@@ -1,0 +1,195 @@
+{
+  "benchmark": "traversals",
+  "timestamp": "2026-08-20T06:09:29.938696+00:00",
+  "dataset": {
+    "nodes": 7115,
+    "relationships": 103689
+  },
+  "warmup_iterations": 20,
+  "measured_iterations": 100,
+  "databases": {
+    "neo4j": {
+      "status": "ok",
+      "queries": {
+        "one_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 3.8218,
+            "min_ms": 1.3929,
+            "max_ms": 59.9265,
+            "p50_ms": 1.6425,
+            "p95_ms": 2.0873
+          }
+        },
+        "two_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 3.9889,
+            "min_ms": 1.1553,
+            "max_ms": 64.8218,
+            "p50_ms": 1.4524,
+            "p95_ms": 6.4821
+          }
+        },
+        "three_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 15.0734,
+            "min_ms": 1.18,
+            "max_ms": 149.0884,
+            "p50_ms": 2.9574,
+            "p95_ms": 93.4695
+          }
+        }
+      }
+    },
+    "memgraph": {
+      "status": "ok",
+      "queries": {
+        "one_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 0.4143,
+            "min_ms": 0.3621,
+            "max_ms": 0.601,
+            "p50_ms": 0.4051,
+            "p95_ms": 0.4917
+          }
+        },
+        "two_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 0.4658,
+            "min_ms": 0.3618,
+            "max_ms": 1.1278,
+            "p50_ms": 0.4157,
+            "p95_ms": 0.744
+          }
+        },
+        "three_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 2.9794,
+            "min_ms": 0.3869,
+            "max_ms": 49.3481,
+            "p50_ms": 1.0073,
+            "p95_ms": 9.1036
+          }
+        }
+      }
+    },
+    "falkordb": {
+      "status": "ok",
+      "queries": {
+        "one_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 0.4,
+            "min_ms": 0.3691,
+            "max_ms": 0.4742,
+            "p50_ms": 0.3972,
+            "p95_ms": 0.4297
+          }
+        },
+        "two_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 0.447,
+            "min_ms": 0.346,
+            "max_ms": 2.6295,
+            "p50_ms": 0.3867,
+            "p95_ms": 0.6789
+          }
+        },
+        "three_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 1.9362,
+            "min_ms": 0.3998,
+            "max_ms": 49.971,
+            "p50_ms": 0.5654,
+            "p95_ms": 6.7706
+          }
+        }
+      }
+    },
+    "cognodb": {
+      "status": "ok",
+      "queries": {
+        "one_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 307.1925,
+            "min_ms": 265.1996,
+            "max_ms": 519.7646,
+            "p50_ms": 307.2186,
+            "p95_ms": 316.4683
+          }
+        },
+        "two_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 316.4213,
+            "min_ms": 269.9897,
+            "max_ms": 613.0633,
+            "p50_ms": 307.175,
+            "p95_ms": 357.8681
+          }
+        },
+        "three_hop": {
+          "status": "error",
+          "error": "Failed to read from defunct connection IPv4Address(('db-e380ffe4.bravo.databases.cognodb.com', 7687)) (ResolvedIPv6Address(('64:ff9b::8846:8460', 7687, 0, 0)))"
+        }
+      }
+    },
+    "apache_age": {
+      "status": "ok",
+      "queries": {
+        "one_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 1.7778,
+            "min_ms": 1.721,
+            "max_ms": 1.8608,
+            "p50_ms": 1.7748,
+            "p95_ms": 1.8208
+          }
+        },
+        "two_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 7.4338,
+            "min_ms": 7.2893,
+            "max_ms": 7.8621,
+            "p50_ms": 7.3993,
+            "p95_ms": 7.6954
+          }
+        },
+        "three_hop": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 7.4746,
+            "min_ms": 7.2768,
+            "max_ms": 8.5703,
+            "p50_ms": 7.3983,
+            "p95_ms": 7.9718
+          }
+        }
+      }
+    }
+  }
+}

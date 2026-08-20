@@ -1,0 +1,147 @@
+{
+  "benchmark": "lookups",
+  "timestamp": "2026-08-20T06:11:23.128691+00:00",
+  "dataset": {
+    "nodes": 7115,
+    "relationships": 103689
+  },
+  "warmup_iterations": 20,
+  "measured_iterations": 100,
+  "databases": {
+    "neo4j": {
+      "status": "ok",
+      "queries": {
+        "point_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 2.7787,
+            "min_ms": 1.0328,
+            "max_ms": 55.5036,
+            "p50_ms": 1.2729,
+            "p95_ms": 1.7882
+          }
+        },
+        "indexed_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 3.7198,
+            "min_ms": 1.0422,
+            "max_ms": 54.0842,
+            "p50_ms": 1.8515,
+            "p95_ms": 2.6846
+          }
+        }
+      }
+    },
+    "memgraph": {
+      "status": "ok",
+      "queries": {
+        "point_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 0.4143,
+            "min_ms": 0.3713,
+            "max_ms": 0.6056,
+            "p50_ms": 0.4028,
+            "p95_ms": 0.4907
+          }
+        },
+        "indexed_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 0.9292,
+            "min_ms": 0.3736,
+            "max_ms": 1.412,
+            "p50_ms": 0.9686,
+            "p95_ms": 1.3597
+          }
+        }
+      }
+    },
+    "falkordb": {
+      "status": "ok",
+      "queries": {
+        "point_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 0.3568,
+            "min_ms": 0.3161,
+            "max_ms": 0.3905,
+            "p50_ms": 0.3562,
+            "p95_ms": 0.3797
+          }
+        },
+        "indexed_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 2.7673,
+            "min_ms": 0.3595,
+            "max_ms": 5.7294,
+            "p50_ms": 2.7831,
+            "p95_ms": 4.9048
+          }
+        }
+      }
+    },
+    "cognodb": {
+      "status": "ok",
+      "queries": {
+        "point_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 304.5645,
+            "min_ms": 260.951,
+            "max_ms": 466.758,
+            "p50_ms": 306.7924,
+            "p95_ms": 343.7313
+          }
+        },
+        "indexed_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 307.1992,
+            "min_ms": 265.6146,
+            "max_ms": 493.8592,
+            "p50_ms": 306.6482,
+            "p95_ms": 367.8747
+          }
+        }
+      }
+    },
+    "apache_age": {
+      "status": "ok",
+      "queries": {
+        "point_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 1.6752,
+            "min_ms": 1.5914,
+            "max_ms": 1.7767,
+            "p50_ms": 1.678,
+            "p95_ms": 1.7173
+          }
+        },
+        "indexed_lookup": {
+          "status": "ok",
+          "stats": {
+            "count": 100,
+            "mean_ms": 4.7447,
+            "min_ms": 3.3769,
+            "max_ms": 6.0702,
+            "p50_ms": 4.8325,
+            "p95_ms": 5.808
+          }
+        }
+      }
+    }
+  }
+}

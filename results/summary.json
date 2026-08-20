@@ -1,0 +1,565 @@
+{
+  "timestamp": "2026-08-20T06:09:29.938619+00:00",
+  "dataset": {
+    "nodes": 7115,
+    "relationships": 103689
+  },
+  "databases": [
+    "neo4j",
+    "memgraph",
+    "falkordb",
+    "cognodb",
+    "apache_age"
+  ],
+  "loading_metrics": {
+    "neo4j": {
+      "nodes_loaded": 7115,
+      "relationships_loaded": 103689,
+      "nodes_per_second": 3949.04,
+      "relationships_per_second": 13067.11,
+      "wall_clock_seconds": 9.74
+    },
+    "memgraph": {
+      "nodes_loaded": 7115,
+      "relationships_loaded": 103689,
+      "nodes_per_second": 80273.63,
+      "relationships_per_second": 67047.43,
+      "wall_clock_seconds": 1.64
+    },
+    "falkordb": {
+      "nodes_loaded": 7115,
+      "relationships_loaded": 103689,
+      "nodes_per_second": 117243.5,
+      "relationships_per_second": 106942.33,
+      "wall_clock_seconds": 1.03
+    },
+    "cognodb": {
+      "nodes_loaded": 7115,
+      "relationships_loaded": 103689,
+      "nodes_per_second": 626.18,
+      "relationships_per_second": 623.9,
+      "wall_clock_seconds": 177.56
+    },
+    "apache_age": {
+      "nodes_loaded": 7115,
+      "relationships_loaded": 103689,
+      "nodes_per_second": 2457.6,
+      "relationships_per_second": 300.71,
+      "wall_clock_seconds": 347.71
+    }
+  },
+  "results": {
+    "traversals": {
+      "benchmark": "traversals",
+      "timestamp": "2026-08-20T06:09:29.938696+00:00",
+      "dataset": {
+        "nodes": 7115,
+        "relationships": 103689
+      },
+      "warmup_iterations": 20,
+      "measured_iterations": 100,
+      "databases": {
+        "neo4j": {
+          "status": "ok",
+          "queries": {
+            "one_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 3.8218,
+                "min_ms": 1.3929,
+                "max_ms": 59.9265,
+                "p50_ms": 1.6425,
+                "p95_ms": 2.0873
+              }
+            },
+            "two_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 3.9889,
+                "min_ms": 1.1553,
+                "max_ms": 64.8218,
+                "p50_ms": 1.4524,
+                "p95_ms": 6.4821
+              }
+            },
+            "three_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 15.0734,
+                "min_ms": 1.18,
+                "max_ms": 149.0884,
+                "p50_ms": 2.9574,
+                "p95_ms": 93.4695
+              }
+            }
+          }
+        },
+        "memgraph": {
+          "status": "ok",
+          "queries": {
+            "one_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 0.4143,
+                "min_ms": 0.3621,
+                "max_ms": 0.601,
+                "p50_ms": 0.4051,
+                "p95_ms": 0.4917
+              }
+            },
+            "two_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 0.4658,
+                "min_ms": 0.3618,
+                "max_ms": 1.1278,
+                "p50_ms": 0.4157,
+                "p95_ms": 0.744
+              }
+            },
+            "three_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 2.9794,
+                "min_ms": 0.3869,
+                "max_ms": 49.3481,
+                "p50_ms": 1.0073,
+                "p95_ms": 9.1036
+              }
+            }
+          }
+        },
+        "falkordb": {
+          "status": "ok",
+          "queries": {
+            "one_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 0.4,
+                "min_ms": 0.3691,
+                "max_ms": 0.4742,
+                "p50_ms": 0.3972,
+                "p95_ms": 0.4297
+              }
+            },
+            "two_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 0.447,
+                "min_ms": 0.346,
+                "max_ms": 2.6295,
+                "p50_ms": 0.3867,
+                "p95_ms": 0.6789
+              }
+            },
+            "three_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 1.9362,
+                "min_ms": 0.3998,
+                "max_ms": 49.971,
+                "p50_ms": 0.5654,
+                "p95_ms": 6.7706
+              }
+            }
+          }
+        },
+        "cognodb": {
+          "status": "ok",
+          "queries": {
+            "one_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 307.1925,
+                "min_ms": 265.1996,
+                "max_ms": 519.7646,
+                "p50_ms": 307.2186,
+                "p95_ms": 316.4683
+              }
+            },
+            "two_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 316.4213,
+                "min_ms": 269.9897,
+                "max_ms": 613.0633,
+                "p50_ms": 307.175,
+                "p95_ms": 357.8681
+              }
+            },
+            "three_hop": {
+              "status": "error",
+              "error": "Failed to read from defunct connection IPv4Address(('db-e380ffe4.bravo.databases.cognodb.com', 7687)) (ResolvedIPv6Address(('64:ff9b::8846:8460', 7687, 0, 0)))"
+            }
+          }
+        },
+        "apache_age": {
+          "status": "ok",
+          "queries": {
+            "one_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 1.7778,
+                "min_ms": 1.721,
+                "max_ms": 1.8608,
+                "p50_ms": 1.7748,
+                "p95_ms": 1.8208
+              }
+            },
+            "two_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 7.4338,
+                "min_ms": 7.2893,
+                "max_ms": 7.8621,
+                "p50_ms": 7.3993,
+                "p95_ms": 7.6954
+              }
+            },
+            "three_hop": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 7.4746,
+                "min_ms": 7.2768,
+                "max_ms": 8.5703,
+                "p50_ms": 7.3983,
+                "p95_ms": 7.9718
+              }
+            }
+          }
+        }
+      }
+    },
+    "lookups": {
+      "benchmark": "lookups",
+      "timestamp": "2026-08-20T06:11:23.128691+00:00",
+      "dataset": {
+        "nodes": 7115,
+        "relationships": 103689
+      },
+      "warmup_iterations": 20,
+      "measured_iterations": 100,
+      "databases": {
+        "neo4j": {
+          "status": "ok",
+          "queries": {
+            "point_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 2.7787,
+                "min_ms": 1.0328,
+                "max_ms": 55.5036,
+                "p50_ms": 1.2729,
+                "p95_ms": 1.7882
+              }
+            },
+            "indexed_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 3.7198,
+                "min_ms": 1.0422,
+                "max_ms": 54.0842,
+                "p50_ms": 1.8515,
+                "p95_ms": 2.6846
+              }
+            }
+          }
+        },
+        "memgraph": {
+          "status": "ok",
+          "queries": {
+            "point_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 0.4143,
+                "min_ms": 0.3713,
+                "max_ms": 0.6056,
+                "p50_ms": 0.4028,
+                "p95_ms": 0.4907
+              }
+            },
+            "indexed_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 0.9292,
+                "min_ms": 0.3736,
+                "max_ms": 1.412,
+                "p50_ms": 0.9686,
+                "p95_ms": 1.3597
+              }
+            }
+          }
+        },
+        "falkordb": {
+          "status": "ok",
+          "queries": {
+            "point_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 0.3568,
+                "min_ms": 0.3161,
+                "max_ms": 0.3905,
+                "p50_ms": 0.3562,
+                "p95_ms": 0.3797
+              }
+            },
+            "indexed_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 2.7673,
+                "min_ms": 0.3595,
+                "max_ms": 5.7294,
+                "p50_ms": 2.7831,
+                "p95_ms": 4.9048
+              }
+            }
+          }
+        },
+        "cognodb": {
+          "status": "ok",
+          "queries": {
+            "point_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 304.5645,
+                "min_ms": 260.951,
+                "max_ms": 466.758,
+                "p50_ms": 306.7924,
+                "p95_ms": 343.7313
+              }
+            },
+            "indexed_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 307.1992,
+                "min_ms": 265.6146,
+                "max_ms": 493.8592,
+                "p50_ms": 306.6482,
+                "p95_ms": 367.8747
+              }
+            }
+          }
+        },
+        "apache_age": {
+          "status": "ok",
+          "queries": {
+            "point_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 1.6752,
+                "min_ms": 1.5914,
+                "max_ms": 1.7767,
+                "p50_ms": 1.678,
+                "p95_ms": 1.7173
+              }
+            },
+            "indexed_lookup": {
+              "status": "ok",
+              "stats": {
+                "count": 100,
+                "mean_ms": 4.7447,
+                "min_ms": 3.3769,
+                "max_ms": 6.0702,
+                "p50_ms": 4.8325,
+                "p95_ms": 5.808
+              }
+            }
+          }
+        }
+      }
+    },
+    "aggregations": {
+      "benchmark": "aggregations",
+      "timestamp": "2026-08-20T06:12:45.732476+00:00",
+      "dataset": {
+        "nodes": 7115,
+        "relationships": 103689
+      },
+      "warmup_iterations": 20,
+      "measured_iterations": 100,
+      "databases": {
+        "neo4j": {
+          "status": "ok",
+          "query": {
+            "status": "ok",
+            "stats": {
+              "count": 100,
+              "mean_ms": 30.4688,
+              "min_ms": 22.2529,
+              "max_ms": 83.7456,
+              "p50_ms": 23.4265,
+              "p95_ms": 55.6399
+            }
+          }
+        },
+        "memgraph": {
+          "status": "ok",
+          "query": {
+            "status": "ok",
+            "stats": {
+              "count": 100,
+              "mean_ms": 29.3867,
+              "min_ms": 28.0562,
+              "max_ms": 31.8089,
+              "p50_ms": 29.3188,
+              "p95_ms": 30.5409
+            }
+          }
+        },
+        "falkordb": {
+          "status": "ok",
+          "query": {
+            "status": "ok",
+            "stats": {
+              "count": 100,
+              "mean_ms": 23.5924,
+              "min_ms": 23.0063,
+              "max_ms": 26.1266,
+              "p50_ms": 23.4577,
+              "p95_ms": 24.3182
+            }
+          }
+        },
+        "cognodb": {
+          "status": "ok",
+          "query": {
+            "status": "ok",
+            "stats": {
+              "count": 100,
+              "mean_ms": 380.5323,
+              "min_ms": 300.7665,
+              "max_ms": 591.9369,
+              "p50_ms": 362.9978,
+              "p95_ms": 544.9753
+            }
+          }
+        },
+        "apache_age": {
+          "status": "ok",
+          "query": {
+            "status": "ok",
+            "stats": {
+              "count": 100,
+              "mean_ms": 164.0912,
+              "min_ms": 159.0573,
+              "max_ms": 169.1913,
+              "p50_ms": 164.0316,
+              "p95_ms": 168.001
+            }
+          }
+        }
+      }
+    },
+    "mixed_workload": {
+      "benchmark": "mixed_workload",
+      "timestamp": "2026-08-20T06:14:04.052521+00:00",
+      "dataset": {
+        "nodes": 7115,
+        "relationships": 103689
+      },
+      "config": {
+        "concurrent_clients": 10,
+        "read_ratio": 0.8,
+        "write_ratio": 0.2,
+        "warmup_seconds": 2.0,
+        "measured_seconds": 10.0
+      },
+      "databases": {
+        "neo4j": {
+          "status": "ok",
+          "stats": {
+            "concurrent_clients": 10,
+            "read_ratio": 0.8,
+            "write_ratio": 0.2,
+            "total_operations": 5090,
+            "read_operations": 4063,
+            "write_operations": 1027,
+            "failed_operations": 0,
+            "measured_duration_seconds": 10.0865,
+            "sustained_qps": 504.64
+          }
+        },
+        "memgraph": {
+          "status": "ok",
+          "stats": {
+            "concurrent_clients": 10,
+            "read_ratio": 0.8,
+            "write_ratio": 0.2,
+            "total_operations": 24663,
+            "read_operations": 19667,
+            "write_operations": 4996,
+            "failed_operations": 0,
+            "measured_duration_seconds": 10.0027,
+            "sustained_qps": 2465.64
+          }
+        },
+        "falkordb": {
+          "status": "ok",
+          "stats": {
+            "concurrent_clients": 10,
+            "read_ratio": 0.8,
+            "write_ratio": 0.2,
+            "total_operations": 42147,
+            "read_operations": 33535,
+            "write_operations": 8612,
+            "failed_operations": 0,
+            "measured_duration_seconds": 10.0006,
+            "sustained_qps": 4214.44
+          }
+        },
+        "cognodb": {
+          "status": "ok",
+          "stats": {
+            "concurrent_clients": 10,
+            "read_ratio": 0.8,
+            "write_ratio": 0.2,
+            "total_operations": 270,
+            "read_operations": 222,
+            "write_operations": 48,
+            "failed_operations": 0,
+            "measured_duration_seconds": 10.1344,
+            "sustained_qps": 26.64
+          }
+        },
+        "apache_age": {
+          "status": "ok",
+          "stats": {
+            "concurrent_clients": 10,
+            "read_ratio": 0.8,
+            "write_ratio": 0.2,
+            "total_operations": 2996,
+            "read_operations": 2393,
+            "write_operations": 603,
+            "failed_operations": 0,
+            "measured_duration_seconds": 10.0064,
+            "sustained_qps": 299.41
+          }
+        }
+      }
+    }
+  },
+  "total_wall_clock_seconds": 887.06
+}

@@ -1,0 +1,37 @@
+{
+  "neo4j": {
+    "nodes_loaded": 7115,
+    "relationships_loaded": 103689,
+    "nodes_per_second": 3949.04,
+    "relationships_per_second": 13067.11,
+    "wall_clock_seconds": 9.74
+  },
+  "memgraph": {
+    "nodes_loaded": 7115,
+    "relationships_loaded": 103689,
+    "nodes_per_second": 80273.63,
+    "relationships_per_second": 67047.43,
+    "wall_clock_seconds": 1.64
+  },
+  "falkordb": {
+    "nodes_loaded": 7115,
+    "relationships_loaded": 103689,
+    "nodes_per_second": 117243.5,
+    "relationships_per_second": 106942.33,
+    "wall_clock_seconds": 1.03
+  },
+  "cognodb": {
+    "nodes_loaded": 7115,
+    "relationships_loaded": 103689,
+    "nodes_per_second": 626.18,
+    "relationships_per_second": 623.9,
+    "wall_clock_seconds": 177.56
+  },
+  "apache_age": {
+    "nodes_loaded": 7115,
+    "relationships_loaded": 103689,
+    "nodes_per_second": 2457.6,
+    "relationships_per_second": 300.71,
+    "wall_clock_seconds": 347.71
+  }
+}

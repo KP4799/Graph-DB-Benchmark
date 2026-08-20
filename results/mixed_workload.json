@@ -1,0 +1,87 @@
+{
+  "benchmark": "mixed_workload",
+  "timestamp": "2026-08-20T06:14:04.052521+00:00",
+  "dataset": {
+    "nodes": 7115,
+    "relationships": 103689
+  },
+  "config": {
+    "concurrent_clients": 10,
+    "read_ratio": 0.8,
+    "write_ratio": 0.2,
+    "warmup_seconds": 2.0,
+    "measured_seconds": 10.0
+  },
+  "databases": {
+    "neo4j": {
+      "status": "ok",
+      "stats": {
+        "concurrent_clients": 10,
+        "read_ratio": 0.8,
+        "write_ratio": 0.2,
+        "total_operations": 5090,
+        "read_operations": 4063,
+        "write_operations": 1027,
+        "failed_operations": 0,
+        "measured_duration_seconds": 10.0865,
+        "sustained_qps": 504.64
+      }
+    },
+    "memgraph": {
+      "status": "ok",
+      "stats": {
+        "concurrent_clients": 10,
+        "read_ratio": 0.8,
+        "write_ratio": 0.2,
+        "total_operations": 24663,
+        "read_operations": 19667,
+        "write_operations": 4996,
+        "failed_operations": 0,
+        "measured_duration_seconds": 10.0027,
+        "sustained_qps": 2465.64
+      }
+    },
+    "falkordb": {
+      "status": "ok",
+      "stats": {
+        "concurrent_clients": 10,
+        "read_ratio": 0.8,
+        "write_ratio": 0.2,
+        "total_operations": 42147,
+        "read_operations": 33535,
+        "write_operations": 8612,
+        "failed_operations": 0,
+        "measured_duration_seconds": 10.0006,
+        "sustained_qps": 4214.44
+      }
+    },
+    "cognodb": {
+      "status": "ok",
+      "stats": {
+        "concurrent_clients": 10,
+        "read_ratio": 0.8,
+        "write_ratio": 0.2,
+        "total_operations": 270,
+        "read_operations": 222,
+        "write_operations": 48,
+        "failed_operations": 0,
+        "measured_duration_seconds": 10.1344,
+        "sustained_qps": 26.64
+      }
+    },
+    "apache_age": {
+      "status": "ok",
+      "stats": {
+        "concurrent_clients": 10,
+        "read_ratio": 0.8,
+        "write_ratio": 0.2,
+        "total_operations": 2996,
+        "read_operations": 2393,
+        "write_operations": 603,
+        "failed_operations": 0,
+        "measured_duration_seconds": 10.0064,
+        "sustained_qps": 299.41
+      }
+    }
+  }
+}

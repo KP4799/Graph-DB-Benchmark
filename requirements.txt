@@ -1,0 +1,9 @@
+neo4j
+memgraph
+redis
+python-dotenv
+pandas
+numpy
+matplotlib
+falkordb
+psycopg2-binary
