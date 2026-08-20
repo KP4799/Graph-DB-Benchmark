@@ -77,6 +77,7 @@ data/
 │
 ├── data/
 ├── results/
+│   └── charts/
 ├── docker-compose.yml
 ├── requirements.txt
 └── README.md
@@ -121,47 +122,32 @@ docker compose ps
 
 ---
 
-## Loading the Dataset
+## Running the entire pipeline
 
-Load the dataset into all databases:
+To run the entire pipeline run:
 
 ```bash
-python loaders/load_all.py
+python run_benchmarks.py
 ```
 
-The loading pipeline automatically:
+The pipeline automatically:
 
 - Clears previously loaded data.
 - Creates a new graph when required.
 - Imports all nodes.
 - Imports all relationships.
 - Measures loading performance.
+- Tests all benchmarks.
+- Stores the result of respective benchmarks.
+- Generates charts to help visualize the results.
 
-Loading results are stored in:
+## Loading the same dataset to all databases
 
-```text
-results/loading_time.json
-```
-
----
-
-## Running the Complete Benchmark Suite
-
-Run all benchmarks:
+To run the entire pipeline run:
 
 ```bash
-python benchmarks/run_all.py
+python loaders/load_all.py
 ```
-
-A combined report is generated automatically.
-
-Benchmark results are stored in:
-
-```text
-results/summary.json
-```
-
----
 
 ## Running Individual Benchmarks
 
@@ -218,122 +204,59 @@ Output:
 ```text
 results/mixed_workload.json
 ```
-
 ---
 
-## Benchmark Queries
+## Benchmark Charts
 
-### 1. Loading Queries
+Charts are generated from the JSON benchmark results and provide visual comparisons of the measured database performance.
 
-#### Node Creation
+Charts cover:
 
-```cypher
-UNWIND $batch AS row
-MERGE (u:User {id: row.id})
-```
+- Loading throughput
+- Loading time
+- Traversal latency
+- Lookup latency
+- Aggregation latency
+- Mixed-workload throughput
 
-#### Relationship Creation
+The charts are generated from the recorded benchmark results rather than manually entered values.
 
-```cypher
-UNWIND $batch AS row
-MATCH (source:User {id: row.source})
-MATCH (target:User {id: row.target})
-CREATE (source)-[:VOTED_FOR]->(target)
-```
+### Chart Interpretation
 
----
+- Loading charts compare nodes/second, relationships/second, and total loading time.
+- Traversal charts compare latency across one-hop, two-hop, and three-hop traversals.
+- Lookup charts compare point and indexed lookup latency.
+- The aggregation chart compares aggregation latency.
+- The mixed-workload chart compares sustained QPS.
+- Latency values are shown in milliseconds (ms).
+- Throughput values are shown as operations per second or queries per second (QPS).
 
-### 2. Traversal Queries
+Some database results differ by large multiples. Logarithmic scaling is therefore used where necessary so that results from all databases remain visible in the same chart.
 
-#### One-Hop Traversal
+Bar-value labels are displayed directly on the bars where appropriate.
 
-```cypher
-MATCH (u:User {id: $id})-[:VOTED_FOR]->(neighbor)
-RETURN neighbor.id
-```
+A failed or unavailable benchmark result is not treated as zero. It is displayed as unavailable or failed instead.
 
-#### Two-Hop Traversal
+The charts are intended as visual summaries. The JSON files in `results/` remain the authoritative machine-readable benchmark results.
 
-```cypher
-MATCH (u:User {id: $id})-[:VOTED_FOR]->()-[:VOTED_FOR]->(neighbor)
-RETURN neighbor.id
-```
 
-#### Three-Hop Traversal
+## Results Directory
 
-```cypher
-MATCH (u:User {id: $id})
-      -[:VOTED_FOR]->()
-      -[:VOTED_FOR]->()
-      -[:VOTED_FOR]->(neighbor)
-RETURN neighbor.id
-```
+```text
+results/
+├── aggregations.json
+├── loading_time.json
+├── lookups.json
+├── mixed_workload.json
+├── summary.json
+├── traversals.json
+└── charts/
 
----
-
-### 3. Lookup Queries
-
-#### Point Lookup
-
-```cypher
-MATCH (u:User {id: $id})
-RETURN u
-```
-
-#### Indexed Lookup
-
-```cypher
-MATCH (u:User)
-WHERE u.id = $id
-RETURN u
 ```
 
 ---
 
-### 4. Aggregation Query
-
-```cypher
-MATCH (u:User)-[:VOTED_FOR]->()
-RETURN u.id, count(*) AS votes
-ORDER BY votes DESC
-LIMIT 10
-```
-
----
-
-### 5. Mixed Workload Queries
-
-The mixed workload benchmark simulates concurrent client activity using an
-80:20 read-to-write ratio.
-
-#### Read Operation
-
-```cypher
-MATCH (u:User {id: $id})
-RETURN u
-```
-
-#### Write Operation
-
-```cypher
-CREATE (:BenchmarkNode {
-    id: $id
-})
-```
-
-#### Workload Configuration
-
-| Parameter | Value |
-| --- | --- |
-| Concurrent clients | 10 |
-| Read operations | 80% |
-| Write operations | 20% |
-| Warm-up duration | 2 seconds |
-| Measured duration | 10 seconds |
-
----
-
-## Benchmark Metrics
+## Benchmark Metrics and Queries
 
 ### 1. Loading Performance
 
@@ -431,16 +354,13 @@ Recorded metrics:
 
 ---
 
-## Results Directory
 
-```text
-results/
-├── aggregations.json
-├── loading_time.json
-├── lookups.json
-├── mixed_workload.json
-├── summary.json
-└── traversals.json
+### Generating Charts
+
+Run:
+
+```bash
+python generate_charts.py
 ```
 
 ---
@@ -451,7 +371,7 @@ results/
 
 Measures the efficiency of dataset ingestion.
 
-Graph model:
+Query:
 
 ```cypher
 (:User {id})
