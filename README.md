@@ -289,7 +289,7 @@ Recorded metrics:
 
 | Database | Nodes/sec | Relationships/sec | Total Time (s) |
 | --- | ---: | ---: | ---: |
-| Neo4j | 3,949.049 | 13,067.11 | 9.74 |
+| Neo4j | 3,949.04 | 13,067.11 | 9.74 |
 | Memgraph | 80,273.63 | 67047.43 | 1.64 |
 | FalkorDB | 11,7243.5 | 10,6942.33 | 1.03 |
 | CognoDB | 626.18 | 623.90 | 177.56 |
@@ -487,35 +487,33 @@ Measures the amount of persistent storage used after the dataset is fully loaded
 
 ### Loading Performance
 
-FalkorDB achieved the highest ingestion throughput, followed closely by Memgraph. Neo4j demonstrated moderate loading performance, while Apache AGE and CognoDB required substantially more time to create relationships.
+- FalkorDB achieved the highest ingestion throughput, followed closely by Memgraph. Neo4j demonstrated moderate loading performance, while Apache AGE and CognoDB required substantially more time to create relationships.
 
 ### Traversal Performance
 
-Memgraph consistently achieved the lowest traversal latency across all traversal depths. FalkorDB performed similarly for one-hop traversals but exhibited higher variance during deeper traversals. Neo4j maintained stable performance across all traversal depths. Apache AGE showed predictable but slower execution times.
+- FalkorDB consistently achieved the lowest traversal latency across all traversal depths. Memgraph performed similarly for one-hop and two-hop traversals but exhibited higher variance during deeper traversals. Neo4j maintained stable performance across all traversal depths. Apache AGE showed predictable but slower execution times.
 
-CognoDB experienced connection failures during traversal benchmarking, so traversal results were unavailable.
+- CognoDB experienced connection failures during three-hop traversal benchmarking.
 
 ### Lookup Performance
 
-FalkorDB and Memgraph achieved the fastest point lookups. Neo4j and Apache AGE performed well but with slightly higher latency. CognoDB required significantly more time for both point and indexed lookups.
+- FalkorDB and Memgraph achieved the fastest point lookups. Neo4j and Apache AGE performed well but with slightly higher latency. CognoDB required significantly more time for both point and indexed lookups.
 
 ### Aggregation Performance
 
-FalkorDB achieved the lowest aggregation latency, followed by Memgraph and Neo4j. CognoDB exhibited substantially higher execution times.
-
-Apache AGE aggregation results were unavailable because the Cypher query used in the benchmark was incompatible with Apache AGE's result definition requirements.
+- FalkorDB achieved the lowest aggregation latency, followed by Memgraph and Neo4j.
+- Apache AGE and CognoDB exhibited substantially higher execution times with CognoDB taking the most time.
 
 ### Mixed Workload Performance
 
-FalkorDB achieved the highest throughput under concurrent read/write workloads. Memgraph also demonstrated excellent throughput and low latency. Neo4j maintained stable performance with moderate throughput.
-
-Apache AGE sustained approximately 290 queries per second under mixed workloads, while CognoDB demonstrated the lowest throughput among all evaluated systems.
+- FalkorDB achieved the highest throughput under concurrent read/write workloads. Memgraph also demonstrated excellent throughput and low latency. Neo4j maintained stable performance with moderate throughput.
+- Apache AGE sustained approximately 300 queries per second under mixed workloads, while CognoDB demonstrated the lowest throughput among all evaluated systems.
 
 ---
 
 ## Storage Footprint
 
-Storage footprint was intentionally excluded from the benchmark because these implementations differ significantly, direct comparison of on-disk storage would not provide a consistent metric across all database systems.
+- Storage footprint was intentionally excluded from the benchmark because these implementations differ significantly, direct comparison of on-disk storage would not provide a consistent metric across all database systems.
 
 ---
 
