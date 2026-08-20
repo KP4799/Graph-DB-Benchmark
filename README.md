@@ -2,7 +2,7 @@
 
 A benchmarking framework for comparing the performance of multiple graph database systems using the SNAP Wiki-Vote dataset.
 
-The framework evaluates the following graph databases:
+The framework evaluates the following graph database systems:
 
 - Neo4j
 - Memgraph
@@ -11,6 +11,82 @@ The framework evaluates the following graph databases:
 - Apache AGE
 
 The benchmark focuses on graph-specific operations, including data loading, graph traversals, node lookups, aggregation queries, and mixed read/write workloads.
+
+---
+
+## Database Systems
+
+The benchmark evaluates five graph database systems with different
+architectural approaches.
+
+### Neo4j
+
+**Neo4j** is a native graph database designed around a property-graph model.
+It stores nodes, relationships, and properties as graph-native structures and
+provides Cypher as its primary query language.
+
+In this benchmark, Neo4j is used as a reference native graph database for
+comparison with the other systems.
+
+### Memgraph
+
+**Memgraph** is a high-performance graph database that uses a property-graph
+model and supports Cypher-compatible queries.
+
+Memgraph is designed for low-latency graph workloads and keeps frequently
+accessed graph data in memory, making it particularly relevant for
+latency-sensitive traversal and transactional workloads.
+
+### FalkorDB
+
+**FalkorDB** is a Redis-based graph database that provides a property-graph
+model and Cypher-compatible graph querying.
+
+Its architecture is strongly memory-oriented, making it useful for evaluating
+high-throughput graph operations and low-latency workloads.
+
+Because FalkorDB primarily keeps graph data in memory, its on-disk directory
+size should not be interpreted as its complete runtime memory footprint.
+
+### CognoDB
+
+**CognoDB** is a graph database accessed through the Bolt protocol and
+Cypher-compatible queries.
+
+For this benchmark, CognoDB is accessed using the official Neo4j Python
+driver and is evaluated using the same graph model and benchmark operations
+as the other Cypher-compatible systems.
+
+CognoDB is particularly useful in this comparison because it represents a
+remote graph database deployment, meaning that network and remote execution
+overhead can contribute to measured query latency.
+
+### Apache AGE
+
+**Apache AGE** is a graph database extension for PostgreSQL rather than a
+standalone graph database engine.
+
+It adds graph functionality to PostgreSQL and provides an openCypher-based
+query interface through PostgreSQL.
+
+In this benchmark, Apache AGE is evaluated as a graph layer built on top of
+a relational database system. Its results therefore also reflect the
+characteristics of its PostgreSQL-based architecture.
+
+### Comparison
+
+| Database | General Architecture | Query Interface | Primary Storage Approach |
+| --- | --- | --- | --- |
+| Neo4j | Native graph database | Cypher | Graph-native storage |
+| Memgraph | Native graph database | Cypher | Memory-oriented |
+| FalkorDB | Redis-based graph database | Cypher | Memory-oriented |
+| CognoDB | Graph database | Cypher / Bolt | Remote database deployment |
+| Apache AGE | PostgreSQL graph extension | openCypher / PostgreSQL | PostgreSQL storage |
+
+These architectural differences are important when interpreting benchmark
+results. The benchmark compares the systems as they are normally used, but
+the results should not be interpreted as a comparison of identical internal
+implementations.
 
 ---
 
@@ -459,7 +535,7 @@ Recorded metrics:
 | --- | ---: | ---: |
 | Neo4j | 504.64 | 5,090 |
 | Memgraph | 2,465.64 | 24,663 |
-| FalkorDB | 4,214,44 | 42,147 |
+| FalkorDB | 4,214.44 | 42,147 |
 | CognoDB | 26.64 | 270 |
 | Apache AGE | 299.41 | 2,996 |
 
