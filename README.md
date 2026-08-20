@@ -482,38 +482,68 @@ Measures the amount of persistent storage used after the dataset is fully loaded
 \* FalkorDB primarily stores data in memory. The on-disk directory contains only metadata and does not accurately represent the actual memory footprint.
 
 ---
-
 ## Performance Analysis
 
 ### Loading Performance
 
-- FalkorDB achieved the highest ingestion throughput, followed closely by Memgraph. Neo4j demonstrated moderate loading performance, while Apache AGE and CognoDB required substantially more time to create relationships.
+- FalkorDB achieved the highest measured ingestion throughput and the shortest total loading time in the recorded results. Memgraph was the second-fastest overall for loading.
+- Neo4j showed moderate loading performance.
+- CognoDB and Apache AGE required substantially more time to load the dataset, particularly during relationship creation.
 
 ### Traversal Performance
 
-- FalkorDB consistently achieved the lowest traversal latency across all traversal depths. Memgraph performed similarly for one-hop and two-hop traversals but exhibited higher variance during deeper traversals. Neo4j maintained stable performance across all traversal depths. Apache AGE showed predictable but slower execution times.
-
-- CognoDB experienced connection failures during three-hop traversal benchmarking.
+- Memgraph and FalkorDB produced the lowest latency for the shallow traversal workloads.
+- Memgraph remained consistently fast as traversal depth increased.
+- FalkorDB was very fast for one-hop traversal, but its deeper traversal results showed substantially higher maximum and P95 latency, indicating greater variability.
+- Neo4j maintained functional and relatively consistent performance across all three traversal depths.
+- Apache AGE showed predictable traversal latency, although its two-hop and three-hop results were slower than its one-hop result.
+- CognoDB completed the one-hop and two-hop measurements but the three-hop traversal failed because of a database connection failure.
+- The benchmark reports the completed queries and records the failed query separately.
 
 ### Lookup Performance
 
-- FalkorDB and Memgraph achieved the fastest point lookups. Neo4j and Apache AGE performed well but with slightly higher latency. CognoDB required significantly more time for both point and indexed lookups.
+- FalkorDB achieved the lowest point-lookup latency, followed closely by Memgraph.
+- Neo4j and Apache AGE also completed point lookups with low-millisecond latency.
+- For indexed lookup, Memgraph produced the lowest mean latency among the evaluated systems.
+- CognoDB showed substantially higher latency for both point and indexed lookup operations, with mean latency in the hundreds of milliseconds.
 
 ### Aggregation Performance
 
-- FalkorDB achieved the lowest aggregation latency, followed by Memgraph and Neo4j.
-- Apache AGE and CognoDB exhibited substantially higher execution times with CognoDB taking the most time.
+- FalkorDB achieved the lowest measured aggregation latency, followed by Memgraph and Neo4j.
+- CognoDB completed the aggregation benchmark but showed substantially higher latency than the other databases.
+- Apache AGE did not produce a usable aggregation result because the query failed due to the result-row and column-definition requirements of the Apache AGE `cypher()` interface.
 
 ### Mixed Workload Performance
 
-- FalkorDB achieved the highest throughput under concurrent read/write workloads. Memgraph also demonstrated excellent throughput and low latency. Neo4j maintained stable performance with moderate throughput.
-- Apache AGE sustained approximately 300 queries per second under mixed workloads, while CognoDB demonstrated the lowest throughput among all evaluated systems.
+- The mixed workload benchmark measures sustained throughput under 10 concurrent clients using an 80% read / 20% write workload.
+- FalkorDB achieved the highest sustained QPS in the recorded results, followed by Memgraph.
+- Neo4j completed the workload successfully with lower throughput than FalkorDB and Memgraph.
+- Apache AGE achieved lower throughput than the leading systems.
+- CognoDB produced the lowest sustained QPS and substantially higher mean latency.
+- For this benchmark, **sustained QPS is the primary performance metric** because the workload is specifically designed to measure concurrent read/write throughput. Latency statistics are supplementary and describe the responsiveness and variability of successful operations.
+
+### Storage Footprint
+
+- The recorded storage measurements show different persistent storage requirements across the evaluated systems.
+- Neo4j and Memgraph used substantially more persistent disk space than the measured Apache AGE and CognoDB footprints.
+- FalkorDB's reported 4 KB directory size should not be interpreted as its complete runtime memory or storage requirement because the graph data is primarily maintained in memory.
 
 ---
 
-## Storage Footprint
+## Benchmark Limitations
 
-- Storage footprint was intentionally excluded from the benchmark because these implementations differ significantly, direct comparison of on-disk storage would not provide a consistent metric across all database systems.
+The results should be interpreted within the following conditions:
+
+- All databases were evaluated using the same Wiki-Vote dataset.
+- The same graph model was used across the systems.
+- Benchmark queries use the Cypher-compatible graph model supported by each system.
+- The benchmarks were executed in the configured local/container environment.
+- Latency measurements represent client-side query execution time measured by the Python benchmark.
+- Iteration-based benchmarks use 20 warm-up iterations followed by 100 measured iterations.
+- The mixed workload uses 10 concurrent clients, an 80:20 read/write mix, a 2-second warm-up period, and a 10-second measured period.
+- Failed benchmark operations are reported as failures rather than being treated as zero performance.
+- Storage measurements are implementation-specific and should not be interpreted as perfectly equivalent across different storage architectures.
+- Results can vary depending on hardware, database version, container configuration, cache state, network conditions, and repeated execution.
 
 ---
 
