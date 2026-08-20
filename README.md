@@ -613,11 +613,11 @@ Recorded metrics:
 
 | Database | Nodes/sec | Relationships/sec | Total Time (s) |
 | --- | ---: | ---: | ---: |
-| Neo4j | 11,045.59 | 26,725.49 | 4.52 |
-| Memgraph | 130,705.65 | 100,213.00 | 1.09 |
-| FalkorDB | 257,269.81 | 106,129.94 | 1.00 |
-| CognoDB | 615.62 | 657.96 | 169.15 |
-| Apache AGE | 3,707.37 | 504.18 | 207.58 |
+| Neo4j | 3,949.049 | 13,067.11 | 9.74 |
+| Memgraph | 80,273.63 | 67047.43 | 1.64 |
+| FalkorDB | 11,7243.5 | 10,6942.33 | 1.03 |
+| CognoDB | 626.18 | 623.90 | 177.56 |
+| Apache AGE | 2457.60 | 300.71 | 347.71 |
 
 ---
 
@@ -660,11 +660,11 @@ Recorded metrics:
 
 | Database | 1-Hop | 2-Hop | 3-Hop |
 | --- | ---: | ---: | ---: |
-| Neo4j | 3.12 | 3.13 | 14.97 |
-| Memgraph | 0.43 | 0.49 | 2.95 |
-| FalkorDB | 0.40 | 0.87 | 17.66 |
-| CognoDB | Failed | Failed | Failed |
-| Apache AGE | 1.80 | 7.60 | 7.62 |
+| Neo4j | 3.82 | 3.99 | 15.07 |
+| Memgraph | 0.41 | 0.47 | 2.98 |
+| FalkorDB | 0.40 | 0.45 | 1.94 |
+| CognoDB | 307.19 | 316.42 | Failed |
+| Apache AGE | 1.78 | 7.43 | 7.47 |
 
 ---
 
@@ -701,11 +701,11 @@ Recorded metrics:
 
 | Database | Point Lookup | Indexed Lookup |
 | --- | ---: | ---: |
-| Neo4j | 2.17 | 3.06 |
-| Memgraph | 0.43 | 0.95 |
-| FalkorDB | 0.34 | 2.74 |
-| CognoDB | 305.79 | 297.00 |
-| Apache AGE | 1.64 | 4.85 |
+| Neo4j | 2.78 | 3.72 |
+| Memgraph | 0.41 | 0.93 |
+| FalkorDB | 0.36 | 2.77 |
+| CognoDB | 304.56 | 307.20 |
+| Apache AGE | 1.67 | 4.74 |
 
 ---
 
@@ -734,11 +734,11 @@ Recorded metrics:
 
 | Database | Aggregation |
 | --- | ---: |
-| Neo4j | 35.48 |
-| Memgraph | 29.72 |
-| FalkorDB | 23.62 |
-| CognoDB | 356.51 |
-| Apache AGE | Failed |
+| Neo4j | 30.47 |
+| Memgraph | 29.39 |
+| FalkorDB | 23.59 |
+| CognoDB | 380.53 |
+| Apache AGE | 164.09 |
 
 ---
 
@@ -781,11 +781,11 @@ Recorded metrics:
 
 | Database | QPS | Total Operations |
 | --- | ---: | ---: |
-| Neo4j | 500.72 | 5,060 |
-| Memgraph | 1,929.53 | 19,300 |
-| FalkorDB | 3,240.66 | 32,412 |
-| CognoDB | 29.08 | 296 |
-| Apache AGE | 289.74 | 2,900 |
+| Neo4j | 504.64 | 5,090 |
+| Memgraph | 2,465.64 | 24,663 |
+| FalkorDB | 4,214,44 | 42,147 |
+| CognoDB | 26.64 | 270 |
+| Apache AGE | 299.41 | 2,996 |
 
 ---
 
@@ -800,7 +800,7 @@ Measures the amount of persistent storage used after the dataset is fully loaded
 | Neo4j | 523 MB |
 | Memgraph | 433 MB |
 | FalkorDB | 4 KB* |
-| CognoDB | Not available |
+| CognoDB | 143 MB |
 | Apache AGE | 26.9 MB |
 
 \* FalkorDB primarily stores data in memory. The on-disk directory contains only metadata and does not accurately represent the actual memory footprint.
