@@ -357,6 +357,7 @@ Queries:
 
 - One-hop traversal
 - Two-hop traversal
+- Three-hop traversal
 
 Recorded metrics:
 
@@ -444,150 +445,7 @@ results/
 
 ---
 
----
-
 ## Benchmark Results
-
-### Loading Performance
-
-| Database | Nodes/s | Relationships/s | Total Loading Time (s) |
-| --- | ---: | ---: | ---: |
-| Neo4j | 11,045.59 | 26,725.49 | 4.52 |
-| Memgraph | 130,705.65 | 100,213.00 | 1.09 |
-| FalkorDB | 257,269.81 | 106,129.94 | 1.00 |
-| CognoDB | 615.62 | 657.96 | 169.15 |
-| Apache AGE | 3,707.37 | 504.18 | 207.58 |
-
----
-
-### Traversal Performance
-
-#### One-Hop Traversal
-
-| Database | Mean (ms) | Min (ms) | Max (ms) | P50 (ms) | P95 (ms) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Neo4j | 3.1171 | 1.2357 | 55.8724 | 1.4923 | 2.2015 |
-| Memgraph | 0.4251 | 0.3659 | 0.6799 | 0.4094 | 0.5089 |
-| FalkorDB | 0.4001 | 0.3463 | 0.5623 | 0.3928 | 0.4684 |
-| CognoDB | N/A | N/A | N/A | N/A | N/A |
-| Apache AGE | 1.8034 | 1.7165 | 1.9967 | 1.7818 | 1.9426 |
-
-#### Two-Hop Traversal
-
-| Database | Mean (ms) | Min (ms) | Max (ms) | P50 (ms) | P95 (ms) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Neo4j | 3.1311 | 1.1261 | 52.7896 | 1.4181 | 4.4697 |
-| Memgraph | 0.4948 | 0.3655 | 1.2873 | 0.4322 | 0.8692 |
-| FalkorDB | 0.8664 | 0.3182 | 14.5158 | 0.4155 | 2.4284 |
-| CognoDB | N/A | N/A | N/A | N/A | N/A |
-| Apache AGE | 7.5993 | 7.3412 | 8.5126 | 7.5439 | 7.9855 |
-
-#### Three-Hop Traversal
-
-| Database | Mean (ms) | Min (ms) | Max (ms) | P50 (ms) | P95 (ms) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Neo4j | 14.9737 | 1.0886 | 153.8304 | 2.7495 | 75.7484 |
-| Memgraph | 2.9499 | 0.3737 | 49.2621 | 0.8948 | 9.5374 |
-| FalkorDB | 17.6588 | 0.3746 | 592.0545 | 1.6244 | 77.9699 |
-| CognoDB | N/A | N/A | N/A | N/A | N/A |
-| Apache AGE | 7.6206 | 7.2946 | 12.5057 | 7.4191 | 8.9119 |
-
----
-
-### Lookup Performance
-
-#### Point Lookup
-
-| Database | Mean (ms) | Min (ms) | Max (ms) | P50 (ms) | P95 (ms) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Neo4j | 2.1708 | 0.9539 | 60.7630 | 1.0974 | 1.3548 |
-| Memgraph | 0.4325 | 0.3752 | 0.6396 | 0.4115 | 0.5357 |
-| FalkorDB | 0.3432 | 0.3061 | 0.4542 | 0.3408 | 0.3736 |
-| CognoDB | 305.7940 | 247.8012 | 602.0118 | 306.2041 | 398.1651 |
-| Apache AGE | 1.6361 | 1.5715 | 2.2696 | 1.6185 | 1.6907 |
-
-#### Indexed Lookup
-
-| Database | Mean (ms) | Min (ms) | Max (ms) | P50 (ms) | P95 (ms) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Neo4j | 3.0551 | 0.9419 | 55.3579 | 1.6151 | 3.1001 |
-| Memgraph | 0.9455 | 0.4090 | 1.4739 | 0.9783 | 1.3803 |
-| FalkorDB | 2.7369 | 0.3680 | 6.9185 | 2.7984 | 4.9612 |
-| CognoDB | 296.9969 | 254.2659 | 511.3868 | 305.0512 | 363.7036 |
-| Apache AGE | 4.8545 | 3.4722 | 6.2192 | 4.9835 | 5.9565 |
-
----
-
-### Aggregation Performance
-
-| Database | Mean (ms) | Min (ms) | Max (ms) | P50 (ms) | P95 (ms) |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Neo4j | 35.4815 | 19.3751 | 185.3736 | 23.6717 | 77.5986 |
-| Memgraph | 29.7219 | 27.8929 | 61.9413 | 29.1890 | 31.7870 |
-| FalkorDB | 23.6177 | 23.0729 | 24.9030 | 23.5383 | 24.3465 |
-| CognoDB | 356.5055 | 300.4478 | 612.9394 | 312.9764 | 583.3221 |
-| Apache AGE | N/A | N/A | N/A | N/A | N/A |
-
----
-
-### Mixed Workload Performance
-
-| Database | QPS | Mean Latency (ms) | Total Operations | Read Operations | Write Operations |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Neo4j | 500.72 | 19.7507 | 5,060 | 4,042 | 1,018 |
-| Memgraph | 1,929.53 | 5.1758 | 19,300 | 15,438 | 3,862 |
-| FalkorDB | 3,240.66 | 3.0807 | 32,412 | 25,807 | 6,605 |
-| CognoDB | 29.08 | 277.8901 | 296 | 244 | 52 |
-| Apache AGE | 289.74 | 34.2927 | 2,900 | 2,313 | 587 |
-
----
-
-## Performance Analysis
-
-### Loading Performance
-
-FalkorDB achieved the highest ingestion throughput, followed closely by Memgraph. Neo4j demonstrated moderate loading performance, while Apache AGE and CognoDB required substantially more time to create relationships.
-
-### Traversal Performance
-
-Memgraph consistently achieved the lowest traversal latency across all traversal depths. FalkorDB performed similarly for one-hop traversals but exhibited higher variance during deeper traversals. Neo4j maintained stable performance across all traversal depths. Apache AGE showed predictable but slower execution times.
-
-CognoDB experienced connection failures during traversal benchmarking, so traversal results were unavailable.
-
-### Lookup Performance
-
-FalkorDB and Memgraph achieved the fastest point lookups. Neo4j and Apache AGE performed well but with slightly higher latency. CognoDB required significantly more time for both point and indexed lookups.
-
-### Aggregation Performance
-
-FalkorDB achieved the lowest aggregation latency, followed by Memgraph and Neo4j. CognoDB exhibited substantially higher execution times.
-
-Apache AGE aggregation results were unavailable because the Cypher query used in the benchmark was incompatible with Apache AGE's result definition requirements.
-
-### Mixed Workload Performance
-
-FalkorDB achieved the highest throughput under concurrent read/write workloads. Memgraph also demonstrated excellent throughput and low latency. Neo4j maintained stable performance with moderate throughput.
-
-Apache AGE sustained approximately 290 queries per second under mixed workloads, while CognoDB demonstrated the lowest throughput among all evaluated systems.
-
----
-
-## Storage Footprint
-
-Storage footprint was intentionally excluded from the benchmark because these implementations differ significantly, direct comparison of on-disk storage would not provide a consistent metric across all database systems.
-
----
-
-## Reference
-
-Leskovec, J., Huttenlocher, D., and Kleinberg, J.
-
-SNAP: Stanford Network Analysis Project.
-
-Wiki-Vote Dataset.
-
-
-## Metrics
 
 ### 1. Data Loading
 
@@ -804,3 +662,49 @@ Measures the amount of persistent storage used after the dataset is fully loaded
 | Apache AGE | 26.9 MB |
 
 \* FalkorDB primarily stores data in memory. The on-disk directory contains only metadata and does not accurately represent the actual memory footprint.
+
+---
+
+## Performance Analysis
+
+### Loading Performance
+
+FalkorDB achieved the highest ingestion throughput, followed closely by Memgraph. Neo4j demonstrated moderate loading performance, while Apache AGE and CognoDB required substantially more time to create relationships.
+
+### Traversal Performance
+
+Memgraph consistently achieved the lowest traversal latency across all traversal depths. FalkorDB performed similarly for one-hop traversals but exhibited higher variance during deeper traversals. Neo4j maintained stable performance across all traversal depths. Apache AGE showed predictable but slower execution times.
+
+CognoDB experienced connection failures during traversal benchmarking, so traversal results were unavailable.
+
+### Lookup Performance
+
+FalkorDB and Memgraph achieved the fastest point lookups. Neo4j and Apache AGE performed well but with slightly higher latency. CognoDB required significantly more time for both point and indexed lookups.
+
+### Aggregation Performance
+
+FalkorDB achieved the lowest aggregation latency, followed by Memgraph and Neo4j. CognoDB exhibited substantially higher execution times.
+
+Apache AGE aggregation results were unavailable because the Cypher query used in the benchmark was incompatible with Apache AGE's result definition requirements.
+
+### Mixed Workload Performance
+
+FalkorDB achieved the highest throughput under concurrent read/write workloads. Memgraph also demonstrated excellent throughput and low latency. Neo4j maintained stable performance with moderate throughput.
+
+Apache AGE sustained approximately 290 queries per second under mixed workloads, while CognoDB demonstrated the lowest throughput among all evaluated systems.
+
+---
+
+## Storage Footprint
+
+Storage footprint was intentionally excluded from the benchmark because these implementations differ significantly, direct comparison of on-disk storage would not provide a consistent metric across all database systems.
+
+---
+
+## Reference
+
+Leskovec, J., Huttenlocher, D., and Kleinberg, J.
+
+SNAP: Stanford Network Analysis Project.
+
+Wiki-Vote Dataset.
