@@ -143,8 +143,6 @@ The pipeline automatically:
 
 ## Loading the same dataset to all databases
 
-To run the entire pipeline run:
-
 ```bash
 python loaders/load_all.py
 ```
@@ -239,6 +237,17 @@ A failed or unavailable benchmark result is not treated as zero. It is displayed
 
 The charts are intended as visual summaries. The JSON files in `results/` remain the authoritative machine-readable benchmark results.
 
+---
+
+### Generating Charts
+
+Run:
+
+```bash
+python generate_charts.py
+```
+
+---
 
 ## Results Directory
 
@@ -254,118 +263,7 @@ results/
 
 ```
 
----
-
-## Benchmark Metrics and Queries
-
-### 1. Loading Performance
-
-Measures the efficiency of dataset ingestion.
-
-Recorded metrics:
-
-- Nodes loaded
-- Relationships loaded
-- Nodes per second
-- Relationships per second
-- Total loading time
-
----
-
-### 2. Traversal Performance
-
-Measures the latency of graph traversal operations.
-
-Queries:
-
-- One-hop traversal
-- Two-hop traversal
-- Three-hop traversal
-
-Recorded metrics:
-
-- Mean latency
-- Minimum latency
-- Maximum latency
-- P50 latency
-- P95 latency
-
----
-
-### 3. Lookup Performance
-
-Measures the efficiency of node retrieval.
-
-Queries:
-
-- Point lookup
-- Indexed lookup
-
-Recorded metrics:
-
-- Mean latency
-- Minimum latency
-- Maximum latency
-- P50 latency
-- P95 latency
-
----
-
-### 4. Aggregation Performance
-
-Measures the execution time of aggregation queries.
-
-Query:
-
-```cypher
-MATCH (u:User)-[:VOTED_FOR]->()
-RETURN u.id, count(*) AS votes
-ORDER BY votes DESC
-LIMIT 10
-```
-
-Recorded metrics:
-
-- Mean latency
-- Minimum latency
-- Maximum latency
-- P50 latency
-- P95 latency
-
----
-
-### 5. Mixed Workload Performance
-
-Measures database throughput under concurrent read and write operations.
-
-Configuration:
-
-- 10 concurrent clients
-- 80% read operations
-- 20% write operations
-
-Recorded metrics:
-
-- Sustained queries per second (QPS)
-- Total operations
-- Read operations
-- Write operations
-- Query latency
-
----
-
-
-### Generating Charts
-
-Run:
-
-```bash
-python generate_charts.py
-```
-
----
-
-## Benchmark Results
+## Benchmark Queries and Results
 
 ### 1. Data Loading
 
